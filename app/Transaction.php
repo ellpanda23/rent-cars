@@ -7,25 +7,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
 {
-
     use SoftDeletes;
 
     /**
-     * The attributes that are mass assignable
+     * Los atributos que son asignables en masa
      *
      * @var array
      */
     protected $guarded = ['id'];
 
     /**
-     * The name of current date time with specific timezone
+     * El nombre de la fecha y hora actuales con la zona horaria específica
      *
      * @var constant
      */
     private const TIMEZONE = 'Asia/Jakarta';
 
     /**
-     * Get the customer that owns the transaction.
+     * Obtener el cliente que posee la transacción.
      */
     public function customer()
     {
@@ -33,7 +32,7 @@ class Transaction extends Model
     }
 
     /**
-     * The cars that belong to the transaction.
+     * Los autos que pertenecen a la transacción.
      */
     public function cars()
     {
@@ -42,7 +41,7 @@ class Transaction extends Model
     }
 
     /**
-     * get the transaction's start_date with custom format
+     * Obtener la fecha de inicio de la transacción con un formato personalizado
      *
      * @return mixed
      */
@@ -52,7 +51,7 @@ class Transaction extends Model
     }
 
     /**
-     * get the transaction's finish_date with custom format
+     * Obtener la fecha de finalización de la transacción con un formato personalizado
      *
      * @return mixed
      */
@@ -62,7 +61,7 @@ class Transaction extends Model
     }
 
     /**
-     * get the transaction's return_date with custom format
+     * Obtener la fecha de retorno de la transacción con un formato personalizado
      *
      * @return mixed
      */
@@ -72,7 +71,7 @@ class Transaction extends Model
     }
 
     /**
-     * get the transaction's status with conditions
+     * Obtener el estado de la transacción con condiciones
      *
      * @return bool
      */
@@ -82,7 +81,7 @@ class Transaction extends Model
     }
 
     /**
-     * get the transaction's status with conditions
+     * Obtener el estado de la transacción con condiciones
      *
      * @return bool
      */
@@ -92,7 +91,7 @@ class Transaction extends Model
     }
 
     /**
-     * get the transaction's status with conditions
+     * Obtener el estado de la transacción con condiciones
      *
      * @return bool
      */
@@ -102,21 +101,22 @@ class Transaction extends Model
     }
 
     /**
-     * get the transaction's status
+     * Obtener el estado de la transacción
      *
      * @return array
      */
     public function getTransactionStatusAttribute()
     {
-        if ($this->getTransactionStatusCompleted()) return ['text-success', 'SELESAI'];
+        if ($this->getTransactionStatusCompleted()) return ['text-success', 'SELECCIONADO'];
 
-        if ($this->getTransactionStatusOnGoing()) return ['text-primary', 'BERJALAN'];
+        if ($this->getTransactionStatusOnGoing()) return ['text-primary', 'EN PROGRESO'];
 
-        if ($this->getTransactionStatusLate()) return ['text-danger', 'TERLAMBAT'];
+        if ($this->getTransactionStatusLate()) return ['text-danger', 'TARDÍO'];
     }
 
+
     /**
-     * Scope a query to only include transactions status.
+     * Alcance para una consulta que solo incluya el estado de las transacciones.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  string  $status

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -7,13 +7,13 @@
 
     <title>@yield('title')</title>
 
-    <!-- Fonts -->
+    <!-- Fuentes -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- Styles -->
+    <!-- Estilos -->
     <style>
         html,
         body {
@@ -65,10 +65,10 @@
         <br>
         <div class="ml-4 align-bottom">
             @auth
-            <a href="{{ route('dashboard') }}">Kembali</a>
+            <a href="{{ route('dashboard') }}">Regresar</a>
             @endauth
             @guest
-            <a href="{{ route('login') }}">Kembali</a>
+            <a href="{{ route('login') }}">Regresar</a>
             @endguest
         </div>
     </div>

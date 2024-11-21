@@ -15,7 +15,7 @@
     <li class="nav-item{{ request()->is('dashboard') ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Tablero</span></a>
     </li>
 
     @can('create', App\User::class)
@@ -26,7 +26,7 @@
     <li class="nav-item {{ request()->is('admins*') ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('admins.index') }}">
             <i class="fas fa-user-tag"></i>
-            <span>Menu Admin</span></a>
+            <span>Menú de Admin</span></a>
     </li>
     @endcan
 
@@ -37,7 +37,7 @@
     <li class="nav-item{{ request()->is('customers*') ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('customers.index') }}">
             <i class="fas fa-fw fa-user-alt"></i>
-            <span>Menu Customer</span></a>
+            <span>Menú de Clientes</span></a>
     </li>
 
     <!-- Divider -->
@@ -47,7 +47,7 @@
     <li class="nav-item{{ request()->is('cars*') ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('cars.index', ['status' => 'AVAILABLE']) }}">
             <i class="fas fa-fw fa-car-alt"></i>
-            <span>Menu Mobil</span></a>
+            <span>Menú de Autos</span></a>
     </li>
 
     <!-- Divider -->
@@ -57,7 +57,7 @@
     <li class="nav-item{{ request()->is('transactions*') ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('transactions.index') }}">
             <i class="fas fa-cash-register"></i>
-            <span>Menu Transaksi</span></a>
+            <span>Menú de Transacciones</span></a>
     </li>
 
     <!-- Divider -->
@@ -67,7 +67,7 @@
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
             <i class="fas fa-sign-out-alt"></i>
-            <span>Logout</span></a>
+            <span>Cerrar sesión</span></a>
     </li>
 
     <!-- Divider -->

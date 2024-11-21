@@ -2,15 +2,14 @@
 
 <script>
     $(document).ready(function() {
-            $(".customer-select2").select2({
-            placeholder: "Pilih customer",
+        $(".customer-select2").select2({
+            placeholder: "Seleccionar cliente",
             allowClear: true,
-            });
-
-            $(".cars-select2-multiple").select2({
-            placeholder: "Pilih mobil",
-            allowClear: true,
-            });
         });
 
+        $(".cars-select2-multiple").select2({
+            placeholder: "Seleccionar coche",
+            allowClear: true,
+        });
+    });
 </script>

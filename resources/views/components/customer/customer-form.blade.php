@@ -3,11 +3,11 @@
         <div class="card mt-3">
             <div class="row">
                 <div class="col-10">
-                    <h5 class="card-header">Form {{ $type === 'create' ? ' Tambah' : ' Ubah' }} Customer</h5>
+                    <h5 class="card-header">Formulario {{ $type === 'create' ? ' Agregar' : ' Editar' }} Cliente</h5>
                 </div>
                 <div class="col-2">
                     <a href="{{ route('customers.index') }}"
-                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Kembali</a>
+                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Regresar</a>
                 </div>
             </div>
             <div class="card-body">
@@ -19,7 +19,7 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="name">Nama</label>
+                        <label for="name">Nombre</label>
                         <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
                             id="name" value="{{ $type === 'create' ? old('name') : old('name', $customer->name) }}">
                         @error('name')
@@ -35,7 +35,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="phone">Telepon</label>
+                        <label for="phone">Teléfono</label>
                         <input class="form-control @error('phone') is-invalid @enderror" type="text" name="phone"
                             id="phone" value="{{ $type === 'create' ? old('phone') : old('phone', $customer->phone) }}">
                         @error('phone')
@@ -43,8 +43,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <small class="ml-2">(*opsional)</small>
+                        <label for="email">Correo electrónico</label>
+                        <small class="ml-2">(*opcional)</small>
                         <input class="form-control @error('email') is-invalid @enderror" type="email" name="email"
                             id="email" value="{{ $type === 'create' ? old('email') : old('email', $customer->email) }}">
                         @error('email')
@@ -52,7 +52,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="address">Alamat</label>
+                        <label for="address">Dirección</label>
                         <textarea class="form-control @error('address') is-invalid @enderror" name="address"
                             id="address">{{ $type === 'create' ? old('address') : old('address', $customer->address) }}</textarea>
                         @error('address')
@@ -61,8 +61,8 @@
                     </div>
                     @if ($type === 'create')
                     <div class="form-group">
-                        <label for="image">Profil Customer</label>
-                        <small class="ml-2">(*opsional)</small>
+                        <label for="image">Foto de Perfil del Cliente</label>
+                        <small class="ml-2">(*opcional)</small>
                         <input id="image" name="image" type="file"
                             class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
                         @error('image')
@@ -72,13 +72,13 @@
                     @else
                     <div class="row">
                         <div class="col-sm-5 my-auto mx-auto text-center">
-                            <label class="float-left">Profil Customer saat ini</label>
+                            <label class="float-left">Foto de Perfil del Cliente Actual</label>
                             <img src="{{ $customer->getAvatar() }}" class="rounded-circle img-thumbnail img-fluid"
-                                alt="customer profile">
+                                alt="perfil del cliente">
                         </div>
                         <div class="col-sm-7 my-auto mx-auto">
-                            <label for="image">Ubah Profil Customer</label>
-                            <small class="ml-2">(*opsional)</small>
+                            <label for="image">Cambiar Foto de Perfil</label>
+                            <small class="ml-2">(*opcional)</small>
                             <input id="image" name="image" type="file"
                                 class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
                             @error('image')
@@ -89,7 +89,7 @@
                     @endif
 
                     <button type="submit" class="btn btn-primary btn-block mt-4" id="btnfr">
-                        {{ $type === 'create' ? 'Tambah' : 'Ubah' }}
+                        {{ $type === 'create' ? 'Agregar' : 'Actualizar' }}
                     </button>
                 </form>
             </div>

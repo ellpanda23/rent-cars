@@ -3,11 +3,11 @@
         <div class="card mt-3">
             <div class="row">
                 <div class="col-10">
-                    <h5 class="card-header">Form {{ $type === 'create' ? ' Tambah' : ' Ubah' }} Mobil</h5>
+                    <h5 class="card-header">Formulario {{ $type === 'create' ? ' Añadir' : ' Editar' }} Coche</h5>
                 </div>
                 <div class="col-2">
                     <a href="{{ route('cars.index', ['status' => 'AVAILABLE']) }}"
-                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Kembali</a>
+                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Volver</a>
                 </div>
             </div>
             <div class="card-body">
@@ -19,7 +19,7 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="name">Nama</label>
+                        <label for="name">Nombre</label>
                         <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
                             id="name" value="{{ $type === 'create' ? old('name') : old('name', $car->name) }}">
                         @error('name')
@@ -27,7 +27,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="merk">Merk</label>
+                        <label for="merk">Marca</label>
                         <input class="form-control @error('merk') is-invalid @enderror" type="text" name="merk"
                             id="merk" value="{{ $type === 'create' ? old('merk') : old('merk', $car->merk) }}">
                         @error('merk')
@@ -35,7 +35,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="years">Tahun</label>
+                        <label for="years">Año</label>
                         <input class="form-control @error('years') is-invalid @enderror" type="number" name="years"
                             id="years" value="{{ $type === 'create' ? old('years') : old('years', $car->years) }}">
                         @error('years')
@@ -43,7 +43,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="plat_number">Plat Nomor</label>
+                        <label for="plat_number">Número de matrícula</label>
                         <input class="form-control @error('plat_number') is-invalid @enderror" type="text"
                             name="plat_number" id="plat_number"
                             value="{{ $type === 'create' ? old('plat_number') : old('plat_number', $car->plat_number) }}">
@@ -52,7 +52,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="color">Warna</label>
+                        <label for="color">Color</label>
                         <input class="form-control @error('color') is-invalid @enderror" type="text" name="color"
                             id="color" value="{{ $type === 'create' ? old('color') : old('color', $car->color) }}">
                         @error('color')
@@ -60,7 +60,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="price">Harga</label>
+                        <label for="price">Precio</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Rp.</span>
@@ -76,8 +76,8 @@
                     </div>
                     @if ($type === 'create')
                     <div class="form-group">
-                        <label for="image">Foto Mobil</label>
-                        <small class="ml-2">(*opsional)</small>
+                        <label for="image">Foto del coche</label>
+                        <small class="ml-2">(*opcional)</small>
                         <input id="image" name="image" type="file"
                             class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
                         @error('image')
@@ -88,13 +88,13 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-5 my-auto mx-auto text-center">
-                                <label class="float-left">Foto Mobil saat ini</label>
+                                <label class="float-left">Foto del coche actual</label>
                                 <img src="{{ $car->getImage() }}" class="rounded-circle img-thumbnail img-fluid"
-                                    alt="car image" width="225" height="225">
+                                    alt="imagen del coche" width="225" height="225">
                             </div>
                             <div class="col-sm-7 my-auto mx-auto">
-                                <label for="image">Ubah Foto Mobil</label>
-                                <small class="ml-2">(*opsional)</small>
+                                <label for="image">Cambiar foto del coche</label>
+                                <small class="ml-2">(*opcional)</small>
                                 <input id="image" name="image" type="file"
                                     class="form-control @error('image') is-invalid @enderror"
                                     value="{{ old('image') }}">
@@ -107,7 +107,7 @@
                     @endif
 
                     <button type="submit" class="btn btn-primary btn-block mt-4" id="btnfr">
-                        {{ $type === 'create' ? 'Tambah' : 'Ubah' }}
+                        {{ $type === 'create' ? 'Añadir' : 'Editar' }}
                     </button>
                 </form>
             </div>

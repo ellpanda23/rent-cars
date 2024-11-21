@@ -2,11 +2,10 @@
 
 <script>
     $(document).ready(function() {
-            $(".status-select2").select2({
-            placeholder: "Pilih status",
+        $(".status-select2").select2({
+            placeholder: "Seleccionar estado",
             allowClear: true,
             // width: 'resolve',
-            });
         });
-
+    });
 </script>

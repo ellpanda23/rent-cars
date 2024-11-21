@@ -1,27 +1,27 @@
 @extends('layouts.sb-admin-2.master')
 
-@section('title', 'Halaman Buat Transaksi')
+@section('title', 'Página Crear Transacción')
 
 @section('content')
-<h1>Buat Transaksi</h1>
+<h1>Crear Transacción</h1>
 
 <div class="row justify-content-center mb-5">
     <div class="col-md-8">
         <div class="card mt-3">
             <div class="row">
                 <div class="col-10">
-                    <h5 class="card-header">Form Buat Transaksi</h5>
+                    <h5 class="card-header">Formulario Crear Transacción</h5>
                 </div>
                 <div class="col-2">
                     <a href="{{ route('transactions.index') }}"
-                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Kembali</a>
+                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Regresar</a>
                 </div>
             </div>
             <div class="card-body">
                 <form action="{{ route('transactions.store') }}" method="POST" class="transaction-form" id="myfr">
                     @csrf
                     <div class="form-group">
-                        <label for="invoice_number">No. Invoice</label>
+                        <label for="invoice_number">No. Factura</label>
                         <input class="form-control @error('invoice_number') is-invalid @enderror" type="text"
                             name="invoice_number" id="invoice_number" value="{{ old('invoice_number') }}" readonly>
                         @error('invoice_number')
@@ -29,7 +29,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="customer d-block">Customer</label>
+                        <label for="customer d-block">Cliente</label>
                         <br>
                         <select name="customer_id" class="form-control customer-select2" style="width: 100%">
                             <option></option>
@@ -45,12 +45,12 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="start_date">Tanggal Sewa</label>
+                        <label for="start_date">Fecha de Alquiler</label>
                         <div class="input-group flatpickr">
                             <input type="text" name="start_date"
                                 class="form-control @error('start_date') is-invalid @enderror" id="start_date"
                                 value="{{ old('start_date') }}"
-                                placeholder="{{ old('start_date') ?: 'Pilih tanggal sewa' }}" data-input>
+                                placeholder="{{ old('start_date') ?: 'Seleccionar fecha de alquiler' }}" data-input>
                             <div class="input-group-append" id="button-addon4">
                                 <button class="btn btn-outline-secondary" type="button">
                                     <a class="input-button" title="toggle" data-toggle>
@@ -66,11 +66,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="duration">{{ __('Duration') }}</label>
+                        <label for="duration">{{ __('Duración') }}</label>
                         <input type="number" name="duration"
                             class="form-control @error('duration') is-invalid @enderror" id="duration"
                             value="{{ old('duration') }}">
-                        <small class="form-text text-muted">*Maksimal 30 hari</small>
+                        <small class="form-text text-muted">*Máximo 30 días</small>
                         @error('duration')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -78,7 +78,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="cars d-block">Mobil</label>
+                        <label for="cars d-block">Autos</label>
                         <br>
                         <select name="cars[]" multiple="multiple" class="form-control cars-select2-multiple"
                             style="width: 100%">
@@ -96,7 +96,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="total_price">Total Harga</label>
+                        <label for="total_price">Precio Total</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Rp.</span>
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="payment_amount">Jumlah Pembayaran</label>
+                        <label for="payment_amount">Cantidad de Pago</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Rp.</span>
@@ -125,7 +125,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block mt-4 btn-submit" id="btnfr">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-4 btn-submit" id="btnfr">Enviar</button>
                 </form>
             </div>
         </div>
@@ -157,7 +157,7 @@
     })
     .then(response => response.json())
     .then(result => inputInvoiceNumberElement.value = result.data.invoice_number)
-    .catch(error => alert('500 Internal Server Error'))
+    .catch(error => alert('500 Error Interno del Servidor'))
 
     $('#duration').on('change', function(ev){
         calculate(platNumbers, inputDurationElement.value, inputTotalPriceElement, inputPaymentAmountElement);

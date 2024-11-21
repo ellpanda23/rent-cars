@@ -1,17 +1,16 @@
 @extends('layouts.sb-admin-2.master')
 
-@section('title', 'Halaman Customer Terhapus')
+@section('title', 'Página de Clientes Eliminados')
 
 @section('content')
 <div class="row">
     <div class="col-md-6 text-left">
-        <h1>Data Customer Terhapus</h1>
+        <h1>Datos de Clientes Eliminados</h1>
     </div>
     <div class="col-md-5 text-right">
-        <a href="{{ route('customers.index') }}" class="btn btn-dark">Kembali</a>
+        <a href="{{ route('customers.index') }}" class="btn btn-dark">Volver</a>
     </div>
 </div>
-
 
 <div class="row justify-content-center mt-4">
     <div class="col-md-10">

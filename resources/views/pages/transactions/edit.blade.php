@@ -1,20 +1,20 @@
 @extends('layouts.sb-admin-2.master')
 
-@section('title', 'Halaman Edit Transaksi')
+@section('title', 'Página de Edición de Transacción')
 
 @section('content')
-<h1>Edit Transaksi</h1>
+<h1>Editar Transacción</h1>
 
 <div class="row justify-content-center mb-5">
     <div class="col-md-8">
         <div class="card mt-3">
             <div class="row">
                 <div class="col-10">
-                    <h5 class="card-header">Form Edit Transaksi</h5>
+                    <h5 class="card-header">Formulario de Edición de Transacción</h5>
                 </div>
                 <div class="col-2">
                     <a href="{{ route('transactions.index') }}"
-                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Kembali</a>
+                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Volver</a>
                 </div>
             </div>
             <div class="card-body">
@@ -23,12 +23,12 @@
                     @method('PATCH')
                     @csrf
                     <div class="form-group">
-                        <label for="invoice_number">No. Invoice</label>
+                        <label for="invoice_number">No. de Factura</label>
                         <input class="form-control" type="text" name="invoice_number" id="invoice_number"
                             value="{{ $transaction->invoice_number }}" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="customer d-block">Customer</label>
+                        <label for="customer d-block">Cliente</label>
                         <br>
                         <select name="customer_id" class="form-control customer-select2" style="width: 100%" disabled>
                             <option></option>
@@ -38,7 +38,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="cars d-block">Mobil</label>
+                        <label for="cars d-block">Coche</label>
                         <br>
                         <select name="cars[]" multiple="multiple" class="form-control cars-select2-multiple"
                             style="width: 100%" disabled>
@@ -51,7 +51,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="start_date">Tanggal Sewa</label>
+                        <label for="start_date">Fecha de Inicio</label>
                         <div class="input-group flatpickr">
                             <input type="text" name="start_date" class="form-control" id="start_date"
                                 value="{{ $transaction->start_date }}" placeholder="{{ $transaction->start_date }}"
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="start_date">Tanggal Selesai</label>
+                        <label for="start_date">Fecha de Finalización</label>
                         <div class="input-group flatpickr">
                             <input type="text" name="finish_date" class="form-control" id="finish_date"
                                 value="{{ $transaction->finish_date }}" placeholder="{{ $transaction->finish_date }}"
@@ -81,12 +81,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="total_late">Total Keterlambatan</label>
+                        <label for="total_late">Total de Retraso</label>
                         <input class="form-control" type="text" name="total_late" id="total_late"
-                            value="{{ $transaction->total_late ?: 0 }} hari" disabled>
+                            value="{{ $transaction->total_late ?: 0 }} días" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="penalty_amount">Total Denda</label>
+                        <label for="penalty_amount">Total de Multa</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Rp.</span>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="form-group">
                         <label for="total_price">
-                            Total Harga {{ $transaction->total_late ? ' ( + Total Denda )' : ''}}
+                            Precio Total {{ $transaction->total_late ? ' ( + Total de Multa )' : ''}}
                         </label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="dp_amount">Jumlah DP</label>
+                        <label for="dp_amount">Monto de DP</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Rp.</span>
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="remaining_payment">Sisa Pembayaran</label>
+                        <label for="remaining_payment">Pago Restante</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Rp.</span>
@@ -133,7 +133,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="payment_amount">Jumlah Pelunasan</label>
+                        <label for="payment_amount">Monto de Pago</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Rp.</span>
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="return_amount">Jumlah Kembalian</label>
+                        <label for="return_amount">Monto de Devolución</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Rp.</span>
@@ -161,7 +161,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block mt-4 btn-submit" id="btnfr">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-4 btn-submit" id="btnfr">Enviar</button>
                 </form>
             </div>
         </div>
@@ -195,7 +195,7 @@
         })
         .then(response => response.json())
         .then(result => inputReturnAmount.value = result.data.return_amount)
-        .catch(error => alert('Invalid payment amount'))
+        .catch(error => alert('Cantidad de pago inválida'))
     })
 </script>
 @include('pages.transactions.includes._select2-transactions-script')

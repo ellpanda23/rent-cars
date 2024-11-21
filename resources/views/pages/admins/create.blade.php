@@ -1,20 +1,20 @@
 @extends('layouts.sb-admin-2.master')
 
-@section('title', 'Halaman Tambah Admin')
+@section('title', 'Página Agregar Administrador')
 
 @section('content')
-<h1>Tambah Admin</h1>
+<h1>Agregar Administrador</h1>
 
 <div class="row justify-content-center mb-5">
     <div class="col-md-8">
         <div class="card mt-3">
             <div class="row">
                 <div class="col-10">
-                    <h5 class="card-header">Form Tambah Admin</h5>
+                    <h5 class="card-header">Formulario para Agregar Administrador</h5>
                 </div>
                 <div class="col-2">
                     <a href="{{ route('admins.index') }}"
-                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Kembali</a>
+                        class="btn btn-outline-primary btn-sm float-right my-2 mr-3">Volver</a>
                 </div>
             </div>
             <div class="card-body">
@@ -22,7 +22,7 @@
                     @csrf
 
                     <div class="form-group">
-                        <label for="name">Nama</label>
+                        <label for="name">Nombre</label>
                         <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
                             id="name" value="{{ old('name') }}">
                         @error('name')
@@ -30,7 +30,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Correo Electrónico</label>
                         <input class="form-control @error('email') is-invalid @enderror" type="email" name="email"
                             id="email" value="{{ old('email') }}">
                         @error('email')
@@ -46,7 +46,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="phone">Telepon</label>
+                        <label for="phone">Teléfono</label>
                         <input class="form-control @error('phone') is-invalid @enderror" type="text" name="phone"
                             id="phone" value="{{ old('phone') }}">
                         @error('phone')
@@ -54,7 +54,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="address">Alamat</label>
+                        <label for="address">Dirección</label>
                         <textarea class="form-control @error('address') is-invalid @enderror" name="address"
                             id="address">{{ old('address') }}</textarea>
                         @error('address')
@@ -62,8 +62,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="image">Profil Admin</label>
-                        <small class="ml-2">(*opsional)</small>
+                        <label for="image">Foto de Perfil del Administrador</label>
+                        <small class="ml-2">(*opcional)</small>
                         <input id="image" name="image" type="file"
                             class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
                         @error('image')
@@ -71,7 +71,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block mt-4" id="btnfr">Tambah</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-4" id="btnfr">Agregar</button>
                 </form>
             </div>
         </div>

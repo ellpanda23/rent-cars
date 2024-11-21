@@ -1,9 +1,9 @@
 @extends('layouts.sb-admin-2.master')
 
-@section('title', 'Halaman Ubah Mobil')
+@section('title', 'Página para Editar Automóvil')
 
 @section('content')
-<h1>Ubah Mobil</h1>
+<h1>Editar Automóvil</h1>
 
 <x-car.car-form :route="route('cars.update', $car)" :car="$car" type="update" />
 @endsection

@@ -4,15 +4,15 @@
             <div class="row no-gutters">
                 <div class="col-4 my-auto mx-auto text-center">
                     <img src="{{ $customer->getAvatar() }}" class="rounded-circle img-thumbnail img-fluid"
-                        alt="customer profile">
+                        alt="perfil del cliente">
                 </div>
                 <div class="col-8">
                     <div class="card-body">
                         <h3 class="card-title">{{ $customer->name }}</h3>
                         <p class="card-text">NIK : {{ $customer->nik }}</p>
-                        <p class="card-text">Telepon : {{ $customer->phone }}</p>
-                        <p class="card-text">Email : {{ $customer->email }}</p>
-                        <span class="card-text d-block">Alamat :</span>
+                        <p class="card-text">Teléfono : {{ $customer->phone }}</p>
+                        <p class="card-text">Correo electrónico : {{ $customer->email }}</p>
+                        <span class="card-text d-block">Dirección :</span>
                         <small class="">{{ $customer->address }}</small>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                 <div class="col-md-3 pl-4">
                     <p class="card-text">
                         <small class="text-muted">
-                            Dibuat oleh : {{ createdUpdatedDeletedBy($customer->created_by) }}
+                            Creado por : {{ createdUpdatedDeletedBy($customer->created_by) }}
                         </small>
                     </p>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="col-md-4">
                     <p class="card-text">
                         <small class="text-muted">
-                            Terakhir diubah oleh {{ createdUpdatedDeletedBy($customer->updated_by) }},
+                            Última modificación por {{ createdUpdatedDeletedBy($customer->updated_by) }},
                             {{ ' ' . $customer->updated_at->diffForHumans() }}
                         </small>
                     </p>
@@ -39,7 +39,7 @@
                 <div class="col-md-4 text-right">
                     <p class="card-text">
                         <small class="text-muted">
-                            Dihapus oleh : {{ createdUpdatedDeletedBy($customer->deleted_by) }}
+                            Eliminado por : {{ createdUpdatedDeletedBy($customer->deleted_by) }}
                         </small>
                     </p>
                 </div>

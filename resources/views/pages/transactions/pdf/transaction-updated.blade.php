@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -7,23 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     @include('pages.transactions.includes._bootstrap-4-styles')
-    <title>Nota Transaksi</title>
+    <title>Nota de Transacción</title>
 </head>
 
 <body class="py-3">
-    <h1 class="text-center">NOTA TRANSAKSI</h1>
-    <h5 class="text-center">No. Invoice : {{ $transaction->invoice_number }}</h5>
+    <h1 class="text-center">NOTA DE TRANSACCIÓN</h1>
+    <h5 class="text-center">No. de Factura : {{ $transaction->invoice_number }}</h5>
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             <div class="table-responsive">
                 <table class="table">
                     <tr>
-                        <th scope="row" class="text-left">Nama Customer</th>
+                        <th scope="row" class="text-left">Nombre del Cliente</th>
                         <td class="pl-5">{{ $transaction->customer->name }}</td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Detail Mobil</th>
+                        <th scope="row" class="text-left">Detalles del Vehículo</th>
                         <td>
                             <ul>
                                 @foreach ($transaction->cars as $car)
@@ -35,58 +35,58 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Tanggal Sewa</th>
+                        <th scope="row" class="text-left">Fecha de Alquiler</th>
                         <td class="pl-5">{{ $transaction->start_date_with_day }}</td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Tanggal Selesai</th>
+                        <th scope="row" class="text-left">Fecha de Finalización</th>
                         <td class="pl-5">{{ $transaction->finish_date_with_day }}</td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Tanggal Pengembalian</th>
+                        <th scope="row" class="text-left">Fecha de Devolución</th>
                         <td class="pl-5">{{ $transaction->return_date_with_day }}</td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Status Pembayaran</th>
+                        <th scope="row" class="text-left">Estado del Pago</th>
                         <td class="pl-5 font-weight-bold">
-                            {{ $transaction->status !== 'COMPLETED' ? 'DP' : 'LUNAS' }}
+                            {{ $transaction->status !== 'COMPLETED' ? 'Anticipo' : 'PAGADO' }}
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Total Harga</th>
+                        <th scope="row" class="text-left">Precio Total</th>
                         <td class="pl-5">
                             {{ currencyFormat($transaction->total_price - $transaction->penalty_amount) }}
                         </td>
                     </tr>
                     @if ($transaction->total_late && $transaction->updated_by)
                     <tr>
-                        <th scope="row" class="text-left">Total Keterlambatan</th>
-                        <td class="pl-5">{{ $transaction->total_late }} hari</td>
+                        <th scope="row" class="text-left">Total de Retraso</th>
+                        <td class="pl-5">{{ $transaction->total_late }} días</td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Total Denda</th>
+                        <th scope="row" class="text-left">Total de Multa</th>
                         <td class="pl-5">{{ currencyFormat($transaction->penalty_amount) }}</td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Total Harga + Total Denda</th>
+                        <th scope="row" class="text-left">Precio Total + Multa</th>
                         <td class="pl-5">{{ currencyFormat($transaction->total_price) }}</td>
                     </tr>
                     @endif
                     <tr>
-                        <th scope="row" class="text-left">Jumlah DP</th>
+                        <th scope="row" class="text-left">Monto del Anticipo</th>
                         <td class="pl-5">
                             {{ currencyFormat(($transaction->total_price - $transaction->penalty_amount) / 2) }}
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Sisa Pembayaran</th>
+                        <th scope="row" class="text-left">Saldo por Pagar</th>
                         <td class="pl-5">
                             {{ currencyFormat($transaction->total_price - ($transaction->total_price -
                             $transaction->penalty_amount) / 2) }}
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="text-left">Jumlah Pelunasan</th>
+                        <th scope="row" class="text-left">Monto del Saldo</th>
                         <td class="pl-5">
                             {{ currencyFormat($transaction->payment_amount - ($transaction->total_price -
                             $transaction->penalty_amount) / 2) }}
@@ -94,7 +94,7 @@
                     </tr>
                     @if ($transaction->updated_by && $transaction->payment_amount - $transaction->total_price > 0)
                     <tr>
-                        <th scope="row" class="text-left">Jumlah Kembalian</th>
+                        <th scope="row" class="text-left">Monto a Devolver</th>
                         <td class="pl-5">
                             {{ currencyFormat($transaction->payment_amount - $transaction->total_price) }}
                         </td>
@@ -102,7 +102,7 @@
                     @endif
                 </table>
 
-                <p class="font-weight-bold" style="margin-top: 75px;">Penanggung Jawab</p>
+                <p class="font-weight-bold" style="margin-top: 75px;">Responsable</p>
                 <br>
                 <p class="font-weight-bold mt-5">{{ createdUpdatedDeletedBy($transaction->updated_by) }}</p>
             </div>

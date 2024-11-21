@@ -3,51 +3,51 @@
         <div class="card mt-3">
             <div class="row no-gutters">
                 <div class="card-body">
-                    <p class="card-text">No. Invoice : {{ $transaction->invoice_number }}</p>
-                    <p class="card-text">Customer : {{ $transaction->customer->name }}</p>
-                    <span class="card-text">Jenis Mobil :</span>
+                    <p class="card-text">No. de Factura : {{ $transaction->invoice_number }}</p>
+                    <p class="card-text">Cliente : {{ $transaction->customer->name }}</p>
+                    <span class="card-text">Tipo de Vehículo :</span>
                     <ul>
                         @foreach ($transaction->cars as $car)
                         <li>{{ $car->name }} {{ $car->color }} {{ $car->years }} {{ $car->plat_number }}</li>
                         @endforeach
                     </ul>
                     <p class="card-text">
-                        Tanggal Sewa : <span class="font-weight-bold">{{ $transaction->start_date_with_day }}</span>
+                        Fecha de Alquiler : <span class="font-weight-bold">{{ $transaction->start_date_with_day }}</span>
                     </p>
                     <p class="card-text">
-                        Tanggal Selesai : <span class="font-weight-bold">{{ $transaction->finish_date_with_day }}</span>
+                        Fecha de Finalización : <span class="font-weight-bold">{{ $transaction->finish_date_with_day }}</span>
                     </p>
                     @if ($transaction->updated_by)
                     <p class="card-text">
-                        Tanggal Pengembalian : <span class="font-weight-bold">
+                        Fecha de Devolución : <span class="font-weight-bold">
                             {{ $transaction->return_date_with_day }}</span>
                     </p>
                     @endif
                     <p class="card-text">
-                        Status Pembayaran : <span class="font-weight-bold price">{{ $transaction->status }}</span>
+                        Estado del Pago : <span class="font-weight-bold price">{{ $transaction->status }}</span>
                     </p>
                     @if ($transaction->total_late && $transaction->updated_by)
                     <p class="card-text">
-                        Total Keterlambatan : <span class="font-weight-bold price">
-                            {{ $transaction->total_late }} hari
+                        Total de Retraso : <span class="font-weight-bold price">
+                            {{ $transaction->total_late }} días
                         </span>
                     </p>
                     <p class="card-text">
-                        Total Denda : <span class="font-weight-bold price">
+                        Total de Multa : <span class="font-weight-bold price">
                             {{ currencyFormat($transaction->penalty_amount) }}</span>
                     </p>
                     @endif
                     <p class="card-text">
-                        Total Harga {{ $transaction->total_late && $transaction->updated_by ? '( + Total Denda)' : '' }}
+                        Total del Precio {{ $transaction->total_late && $transaction->updated_by ? '( + Total de Multa)' : '' }}
                         :
                         <span class="font-weight-bold price">{{ currencyFormat($transaction->total_price)}}</span>
                     </p>
                     <p class="card-text">
-                        Jumlah Pembayaran : <span class="font-weight-bold price">
+                        Monto Pagado : <span class="font-weight-bold price">
                             {{ currencyFormat($transaction->payment_amount) }}</span>
                     </p>
                     <p class="card-text">
-                        Status Transaksi:
+                        Estado de la Transacción:
                         <span class="font-weight-bold font-italic {{ $transaction->transaction_status[0] }}">
                             {{ $transaction->transaction_status[1] }}
                         </span>
@@ -58,7 +58,7 @@
                 <div class="col-md-3 pl-4">
                     <p class="card-text">
                         <small class="text-muted">
-                            Dibuat oleh : {{ createdUpdatedDeletedBy($transaction->created_by) }}
+                            Creado por : {{ createdUpdatedDeletedBy($transaction->created_by) }}
                         </small>
                     </p>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="col-md-4">
                     <p class="card-text">
                         <small class="text-muted">
-                            Terakhir diubah oleh {{ createdUpdatedDeletedBy($transaction->updated_by) }},
+                            Última modificación por {{ createdUpdatedDeletedBy($transaction->updated_by) }},
                             {{ ' ' . $transaction->updated_at->diffForHumans() }}
                         </small>
                     </p>
@@ -76,7 +76,7 @@
                 <div class="col-md-4 text-right">
                     <p class="card-text">
                         <small class="text-muted">
-                            Dihapus oleh : {{ createdUpdatedDeletedBy($transaction->deleted_by) }}
+                            Eliminado por : {{ createdUpdatedDeletedBy($transaction->deleted_by) }}
                         </small>
                     </p>
                 </div>

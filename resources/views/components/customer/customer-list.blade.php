@@ -3,11 +3,11 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">No.</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Address</th>
-                <th scope="col">Action</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo electrónico</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -20,48 +20,48 @@
                 <td>{{ $customer->address }}</td>
                 <td>
                     @if ($type === 'index')
-                    <a href="{{ route('customers.show', $customer) }}" class="btn btn-success btn-sm my-1">Detail</a>
-                    <a href="{{ route('customers.edit', $customer) }}" class="btn btn-warning btn-sm my-1">Edit</a>
+                    <a href="{{ route('customers.show', $customer) }}" class="btn btn-success btn-sm my-1">Detalle</a>
+                    <a href="{{ route('customers.edit', $customer) }}" class="btn btn-warning btn-sm my-1">Editar</a>
                     @else
                     <a href="{{ route('customers.trash.detail', $customer->phone) }}"
-                        class="btn btn-success btn-sm my-1">Detail</a>
+                        class="btn btn-success btn-sm my-1">Detalle</a>
                     <a href="{{ route('customers.restore', $customer->phone) }}" class="btn btn-warning btn-sm my-1"
-                        onclick="return confirm('Yakin ingin mengembalikan data customer {{ $customer->name }} ?')">Restore</a>
+                        onclick="return confirm('¿Estás seguro de que quieres restaurar el cliente {{ $customer->name }}?')">Restaurar</a>
                     @endif
                     <a href="#" class="btn btn-danger btn-sm" data-toggle="modal"
                         data-target="#deletecustomer{{ $customer->phone }}modal">
-                        {{ $type === 'index' ? 'Hapus' : 'Hapus Permanen' }}
+                        {{ $type === 'index' ? 'Eliminar' : 'Eliminar permanentemente' }}
                     </a>
                 </td>
 
-                <!-- Delete Modal -->
+                <!-- Modal de eliminación -->
                 <div class="modal fade" id="deletecustomer{{ $customer->phone }}modal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                    Hapus customer {{ $type === 'trash' ? ' permanen' : '' }}
+                                    Eliminar cliente {{ $type === 'trash' ? ' permanentemente' : '' }}
                                 </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
                                 <p>
-                                    Apakah anda yakin ingin menghapus customer {{ $type === 'trash' ? ' secara permanen'
+                                    ¿Estás seguro de que quieres eliminar al cliente {{ $type === 'trash' ? ' de forma permanente'
                                     : '' }}
-                                    <strong>{{ $customer->name }}</strong> ?
+                                    <strong>{{ $customer->name }}</strong>?
                                 </p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 <form
                                     action="{{ $type === 'index' ? route('customers.destroy', $customer) : route('customers.force-delete', $customer->phone) }}"
                                     method="post" id="myfr">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" id="btnfr">Submit</button>
+                                    <button type="submit" class="btn btn-danger" id="btnfr">Enviar</button>
                                 </form>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
             <tr>
                 <td colspan="6">
                     <p class="font-weight-bold text-center text-monospace">
-                        Data customer {{ $type === 'trash' ? ' terhapus ' : '' }} tidak tersedia
+                        Los datos del cliente {{ $type === 'trash' ? 'eliminados' : '' }} no están disponibles
                     </p>
                 </td>
             </tr>
@@ -80,7 +80,7 @@
         </tbody>
     </table>
 
-    {{-- Paginate Links --}}
+    {{-- Enlaces de paginación --}}
     <div class="mt-4">
         {{ $customers->withQueryString()->onEachSide(2)->links() }}
     </div>

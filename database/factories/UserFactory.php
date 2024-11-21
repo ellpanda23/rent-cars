@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Hash;
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => 'administrator',
-        'email' => 'admin@kbf-trans.com',
+        'email' => 'admin@admin.com',
         'nik' => '121212121212',
-        'password' => Hash::make('aaaaa'),
+        'password' => Hash::make('password'),
         'phone' => '08123456789',
         'address' => 'jl. pamulang tangerang selatan',
     ];
